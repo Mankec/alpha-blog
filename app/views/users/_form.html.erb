@@ -1,5 +1,3 @@
-
-
 <%= form_with(model: @user, local: true) do |f| %>
 
   <p>
@@ -18,7 +16,7 @@
   </p>
 
   <p>
-    <%= f.submit "Sign up" %>
+    <%= f.submit(@user.new_record? ? "Sign up" : "Update account") %>
   </p>
 
 <% end %>

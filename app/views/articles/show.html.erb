@@ -2,8 +2,15 @@
 
 <p><strong>Title: <%= @article.title %></p></strong>
 <p><strong>Description: <%= @article.description %></p></strong>
+by <%= @article.user.username %>
+<%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+<% if article.categories.any? %>
+  <%= render @article.categories %>
+<% end %>
 
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+<% if logged_in? && @article.user == current_user%>
+  <%= link_to 'Edit', edit_article_path(@article) %>
+  <%= button_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end  %>
 <%= link_to 'Return to articles listing', articles_path(@article) %>
 

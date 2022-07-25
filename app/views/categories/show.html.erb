@@ -1,0 +1,11 @@
+<h1 class="text-center mt-4"><%= @category.name %>Category:</h1>
+
+<div class="text-center mt-4">
+<% if logged_in? && @user == current_user.admin? %>
+  <%= link_to "Edit category name", edit_category_path(@user), class: "btn btn-outline-info" %>
+</div>
+<% end %>
+
+
+
+
